@@ -1,0 +1,23 @@
+Index,Component,Designator,Package,Quantity,Description,Preferred Manufacturer,Preferred Part Number,Alternative Manufacturer,Alternative Part Number,Supplier,Est. Unit Cost (USD)
+1,ESP32-WROOM-32E (16MB),U1,SMD-Module,1,Wi-Fi & Bluetooth microcontroller with 16MB Flash,Espressif Systems,ESP32-WROOM-32E,LCSC,ESP32-WROOM-32E-N16,Mouser/Digikey,2.80
+2,LTE 4G Modem Module,U2,SMD-LCC,1,SIM7600EI Multi-Band LTE GPRS module,SIMCom,SIM7600EI,LCSC,SIM7600G-H,LCSC/Digikey,14.50
+3,AC-DC SMPS Controller,U3,SO-8C,1,Off-Line Switcher IC for Buck converter,Power Integrations,LNK306DN,LCSC,LNK306DG,Mouser,0.65
+4,Precision RTC,U4,SO-8,1,High-accuracy I2C real-time clock,Maxim Integrated,DS3231MZ+,LCSC,DS3231M,Mouser/Digikey,1.20
+5,Darlington Transistor Array,U5,SO-16,1,Relay driver array 500mA output,Texas Instruments,ULN2003ADR,LCSC,ULN2003A,Digikey/LCSC,0.18
+6,Optocoupler Phototransistor,U6-U9,DIP-4,4,Galvanic isolation feedback inputs,Sharp Microelectronics,PC817X4NSZ0F,Everlight,EL817,Mouser,0.08
+7,Linear Regulator 3.3V,U10,SOT-23-5,1,3.3V LDO regulator 600mA low noise,Diodes Incorporated,AP2112K-3.3TRG1,LCSC,AP2112K-3.3TRG1,Mouser,0.12
+8,Power Relay 12V,K1-K3,Through-Hole,3,Power relay 16A 250VAC contacts,Omron,G2R-1-E 12VDC,Songle,SLA-12VDC-SL-C,Mouser/LCSC,1.60
+9,Potential Transformer AC,T1-T3,Through-Hole,3,Isolated voltage transformer 2mA,ZMPT,ZMPT101B,Shenzhen Zece,ZMPT101B,LCSC/Taobao,0.90
+10,Metal Oxide Varistor,MOV1-MOV6,Disc 20mm,6,Varistor 510V 6.5kA surge protection,Littlefuse,V20E320P,Epcos,B72220S0301K101,Mouser,0.22
+11,Snubber Capacitor X2,C1-C3,Radial 15mm,3,0.1uF 400V Film class X2,Kemet,PHE840MD6100MD13R06L2,Wima,MP3-X2-0.1uF,Mouser,0.30
+12,Burden Resistor,R1-R3,SMD-0805,3,33 Ohm 0.5% high-precision resistor,Yageo,RT0805DRE0733RL,Panasonic,ERJ-6ENF33R0V,Mouser,0.02
+13,Burden Bias Resistor,R4-R9,SMD-0805,6,10K Ohm 1% metal film,Yageo,RC0805FR-0710KL,Panasonic,ERJ-6ENF1002V,Mouser,0.01
+14,OLED Screen (Base),DISP1,Module,1,128x64 I2C blue SSD1306 panel,Adafruit,SSD1306,DIYMall,SSD1306-0.96,Amazon/LCSC,1.90
+15,Buzzer Active,LS1,Through-Hole,1,Buzzer piezo active 12V 85dB,Murata,PKM22EPPH4001-B0,CUI Devices,CPT-2212-85T,Mouser,0.40
+16,SIM Card TVS Array,D1,SOT-363,1,5-Channel ESD protection array,ON Semiconductor,SMF05CT1G,Nexperia,PESD5V0U5BF,Mouser,0.15
+17,Fuse Holder & Fuse,F1-F3,Chassis,3,Cartridge fuse slow-blow 2A 500V,Littelfuse,0215002.MXP,Eaton,BK/S506-2-R,Mouser,0.25
+18,Terminal Block Connector,J1-J4,Through-Hole,4,5.08mm pitch heavy-duty screw terminal block,Phoenix Contact,1729128,DEGSON,DG128-5.08,Mouser/LCSC,0.45
+19,CC1101 RF Transceiver,U11,Module,1,Sub-1GHz GFSK transceiver 433MHz,Texas Instruments,CC1101,Ebyte,E07-433M10S,LCSC/Mouser,1.90
+20,RS485 Transceiver,U12,SO-8,1,3.3V half-duplex RS485 transceiver,MaxLinear,SP3485EN-L/TR,LCSC,SP3485EEN-L,LCSC/Digikey,0.28
+21,Hydrostatic Level Sensor,S1,Probe,1,Modbus hydrostatic depth probe IP68,OEM,Level Sensor,Jiasheng,JS-PT200,LCSC/Alibaba,28.00
+22,OLED Display (Remote),DISP2,Module,1,0.96 inch SSD1306 OLED screen for remote,Adafruit,SSD1306,DIYMall,SSD1306-0.96,LCSC,1.90

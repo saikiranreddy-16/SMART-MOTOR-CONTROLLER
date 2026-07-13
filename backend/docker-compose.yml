@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: smartfarm-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secretpassword123
+      POSTGRES_DB: smartfarm
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: smartfarm-redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: smartfarm-mqtt
+    restart: always
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: smartfarm-backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=secretpassword123
+      - DATABASE_NAME=smartfarm
+      - JWT_SECRET=supersecretjwtsignkeyvalue123!
+      - JWT_EXPIRES_IN=30d
+      - MQTT_HOST=mosquitto
+      - MQTT_PORT=1883
+      - OPEN_METEO_URL=https://api.open-meteo.com/v1/forecast
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - postgres
+      - redis
+      - mosquitto
+
+volumes:
+  pgdata:

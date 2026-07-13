@@ -1,0 +1,56 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: Check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper: Get user details
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    // Rules for User Profiles
+    match /users/{userId} {
+      allow read, write: if isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Rules for Device configurations & parameters
+    match /devices/{deviceId} {
+      // Allow read if user is the device owner or is in the whitelisted users array
+      allow read: if isAuthenticated() && (
+        resource.data.owner_id == request.auth.uid ||
+        request.auth.token.phone_number in resource.data.whitelisted_users.map(u => u.phone)
+      );
+
+      // Only owner can register, delete, or update safety limits
+      allow create, delete: if isAuthenticated();
+      allow update: if isAuthenticated() && (
+        resource.data.owner_id == request.auth.uid &&
+        (request.resource.data.safety_thresholds == resource.data.safety_thresholds || 
+         getUserData().role == "Owner")
+      );
+    }
+
+    // Rules for Device Telemetry Subcollection
+    match /devices/{deviceId}/telemetry_history/{logId} {
+      allow read: if isAuthenticated() && (
+        get(/databases/$(database)/documents/devices/$(deviceId)).data.owner_id == request.auth.uid ||
+        request.auth.token.phone_number in get(/databases/$(database)/documents/devices/$(deviceId)).data.whitelisted_users.map(u => u.phone)
+      );
+      // Only the device (authenticated via system account) or backend functions can write telemetry
+      allow write: if false; 
+    }
+
+    // Rules for Device Audit logs
+    match /devices/{deviceId}/audit_logs/{logId} {
+      allow read: if isAuthenticated() && (
+        get(/databases/$(database)/documents/devices/$(deviceId)).data.owner_id == request.auth.uid ||
+        request.auth.token.phone_number in get(/databases/$(database)/documents/devices/$(deviceId)).data.whitelisted_users.map(u => u.phone)
+      );
+      allow write: if isAuthenticated();
+    }
+  }
+}

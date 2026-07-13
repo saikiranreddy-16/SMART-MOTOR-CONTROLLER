@@ -1,0 +1,13 @@
+{
+  "prompts": {
+    "1": "menu.wav",
+    "2": "starting.wav",
+    "3": "stopping.wav",
+    "4": "status_running.wav",
+    "5": "status_off.wav",
+    "6": "status_fault.wav",
+    "7": "low_water.wav",
+    "8": "error.wav",
+    "9": "invalid_key.wav"
+  }
+}
